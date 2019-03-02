@@ -1,0 +1,12 @@
+# git commit
+pre-commit called
+prepare-commit-msg called
+commit-msg called
+post-commit called
+
+# git commit --amend
+pre-commit called
+prepare-commit-msg called
+commit-msg called
+post-commit called
+post-rewrite called
