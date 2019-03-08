@@ -3,8 +3,8 @@
 filename="${BASH_SOURCE[0]}"
 echo $filename
 #--------------------------------- toml utils ---------------------------------#
-toml_indent=""
-toml_key=$EXPERIMENT_NAME # in branch? $(git rev-parse --abbrev-ref)
+export toml_indent=""
+# toml_key=$EXPERIMENT_NAME # in branch? $(git rev-parse --abbrev-ref)
 # function join_by { local IFS="$1"; shift; echo "$*"; }
 
 function toml-indent() {
@@ -13,9 +13,9 @@ function toml-indent() {
 }
 
 function toml-escape() {
-  # quote each arg, join them with '.'
+  # quote each arg if neccessary
   local IFS="."
-  local re="[.\"']"
+  local re="[.\"' \t\n]"
   declare -a result
   while [[ -n "$1" ]]; do
     if [[ "$1" =~ $re ]]; then # shellcheck  disable=SC2076

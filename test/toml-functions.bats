@@ -19,6 +19,11 @@ load 'libs/bats-assert/load'
   assert_equal "$result" '"fo\"o" bar'
 }
 
+@test "escaping: whitespace" {
+  result="$(toml-escape 'fo o' "bar")"
+  assert_equal "$result" '"fo o" bar'
+}
+
 # failing, but ok
 # @test "escaping: ''" {
 #   result="$(toml-escape '' "")"
