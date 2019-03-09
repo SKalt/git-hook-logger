@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
 
-filename="${BASH_SOURCE[0]}"
-echo $filename
 #--------------------------------- toml utils ---------------------------------#
 export toml_indent=""
-# toml_key=$EXPERIMENT_NAME # in branch? $(git rev-parse --abbrev-ref)
-# function join_by { local IFS="$1"; shift; echo "$*"; }
 
 function toml-indent() {
   # indent each line of STDIN
@@ -19,7 +15,7 @@ function toml-escape() {
   declare -a result
   while [[ -n "$1" ]]; do
     if [[ "$1" =~ $re ]]; then # shellcheck  disable=SC2076
-      result+=("\"$(echo "$1" | sed 's/"/\\\"/g')\"")
+      result+=("\"${1/\"/\\\"}\"")
     else
       result+=("$1")
     fi
@@ -29,8 +25,9 @@ function toml-escape() {
 }
 
 function toml-key() {
+  # create a string toml key with the necessary bits quoted.
   declare -a key
-  key=(`toml-escape "$@"`)
+  key=($(toml-escape "$@"))
   local IFS="."
   echo "${key[*]}" # assumes all keys are quoted/space-safe
 }
@@ -40,9 +37,9 @@ function toml-table() {
 }
 
 function toml-key-value-pair(){
-  local toml_indent key value
-  toml_indent="  $toml_indent"
+  local toml_indent="  $toml_indent"
+  local key value
   key="$(toml-key "$1")"
-  value="$(toml-escape $2)"
+  value="$(toml-escape "$2")"
   echo "$key = $value" | indent-lines
 }
