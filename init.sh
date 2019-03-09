@@ -2,6 +2,7 @@
 root=$(git rev-parse --show-toplevel)
 git_dir="$(git rev-parse --git-dir)"
 hooks_dir="$root/$git_dir/hooks"
+experiment_name="$1"
 
 hooks=(
   "applypatch-msg" "pre-applypatch" "post-applypatch" "pre-commit"
@@ -17,17 +18,16 @@ PATH=$PATH:$(pwd)/src
 '
 body="
 log_file=$root/git-hooks.log
-experiment_name = \"$experiment_name\""
+experiment_name=\"$experiment_name\""
 footer='{
   echo "[$(experiment-table)]"
-  toml_indent="  ";
   log-hookname;
   probe-args;
-  make-probe heads;
-  make-probe tags;
+  make-probe heads
+  make-probe tags
   make-probe remotes;
-  make-probe toplevel;
-  make-probe exported-vars;
+  make-probe toplevel
+  make-probe exported-vars
 } >> $log_file
 '
 
@@ -37,11 +37,11 @@ function make-logger() {
   {
     echo "$header";
     echo "$body";
-    echo "";
+    echo "hookname='$hook'";
     echo "$footer"
   } > $hook_file
   chmod +x $hook_file
-  echo $hook_file
+  echo $hook
 }
 
 function main() {
