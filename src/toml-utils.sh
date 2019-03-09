@@ -11,7 +11,7 @@ function toml-indent() {
 function toml-escape() {
   # quote each arg if neccessary
   local IFS="."
-  local re="[.\"' \t\n]"
+  local re="[.\"' ]"
   declare -a result
   while [[ -n "$1" ]]; do
     if [[ "$1" =~ $re ]]; then # shellcheck  disable=SC2076

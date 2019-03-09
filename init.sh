@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 root=$(git rev-parse --show-toplevel)
 git_dir="$(git rev-parse --git-dir)"
-hooks_dir="$git_dir/hooks"
+hooks_dir="$root/$git_dir/hooks"
 
 hooks=(
   "applypatch-msg" "pre-applypatch" "post-applypatch" "pre-commit"
@@ -11,12 +11,35 @@ hooks=(
   "fsmonitor-watchman" "p4-pre-submit"
 )
 
+header='#! /usr/bin/env bash
+PATH=$PATH:$(pwd)/src
+. probes.sh
+'
+body="
+log_file=$root/git-hooks.log
+experiment_name = \"$experiment_name\""
+footer='{
+  echo "[$(experiment-table)]"
+  toml_indent="  ";
+  log-hookname;
+  probe-args;
+  make-probe heads;
+  make-probe tags;
+  make-probe remotes;
+  make-probe toplevel;
+  make-probe exported-vars;
+} >> $log_file
+'
+
 function make-logger() {
   local hook=$1
   local hook_file="$hooks_dir/$hook"
-  cat $root/src/utility-fns.sh          >> $hook_file
-  cat $root/src/toml-utils.sh           >> $hook_file
-  cat $root/src/state-introspection.sh  >> $hook_file
+  {
+    echo "$header";
+    echo "$body";
+    echo "";
+    echo "$footer"
+  } > $hook_file
   chmod +x $hook_file
   echo $hook_file
 }
