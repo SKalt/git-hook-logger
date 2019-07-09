@@ -1,6 +1,9 @@
 #! /usr/bin/env bash
+root=$(git rev-parse --show-toplevel)
 git_dir="$(git rev-parse --git-dir)"
-hooks_dir="$git_dir/hooks"
+hooks_dir="$root/$git_dir/hooks"
+experiment_name="$1"
+
 hooks=(
   "applypatch-msg" "pre-applypatch" "post-applypatch" "pre-commit"
   "prepare-commit-msg" "commit-msg" "post-commit" "pre-rebase" "post-checkout"
@@ -9,25 +12,43 @@ hooks=(
   "fsmonitor-watchman" "p4-pre-submit"
 )
 
-make-logger() {
+header='#! /usr/bin/env bash
+PATH=$PATH:$(pwd)/src
+. probes.sh
+'
+body="
+log_file=$root/git-hooks.log
+experiment_name=\"$experiment_name\""
+footer='{
+  echo "[$(experiment-table)]"
+  log-hookname;
+  probe-args;
+  make-probe heads
+  make-probe tags
+  make-probe remotes;
+  make-probe toplevel
+  make-probe exported-vars
+} >> $log_file
+'
+
+function make-logger() {
   local hook=$1
   local hook_file="$hooks_dir/$hook"
-  cat << EOF | sed 's/^    //' > $hook_file
-    #! /usr/bin/env bash
-    echo "$hook"
-    # ls-heads::in-dir
-    # ls-refs/**/*
-    # ls-vars
-    declare | grep -i 'git'
-EOF
+  {
+    echo "$header";
+    echo "$body";
+    echo "hookname='$hook'";
+    echo "$footer"
+  } > $hook_file
   chmod +x $hook_file
-  echo $hook_file
+  echo $hook
 }
 
-main() {
+function main() {
   rm $hooks_dir/*
   for hook in "${hooks[@]}"; do
     make-logger $hook;
   done
 }
-main
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then main; fi

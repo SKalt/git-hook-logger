@@ -1,12 +1,168 @@
-# git commit
-pre-commit called
-prepare-commit-msg called
-commit-msg called
-post-commit called
-
-# git commit --amend
-pre-commit called
-prepare-commit-msg called
-commit-msg called
-post-commit called
-post-rewrite called
+[[simple-commit]]
+  hook = "pre-commit"
+  args = [  ]
+  [simple-commit.heads]
+    functional-bash-src-dir = "a011891"
+    initiate-log = "b0ca07a"
+    master = "17460d5"
+  [simple-commit.tags]
+  [simple-commit.remotes]
+  [simple-commit.toplevel]
+    COMMIT_EDITMSG  =  """ also to be ignored """
+    ORIG_HEAD  =  """ 9cc9976e3fad0b308bb060a399d61f2e5f7f5dcf """
+    HEAD  =  """ ref: refs/heads/functional-bash-src-dir """
+  [simple-commit.exported-vars]
+    GIT_AUTHOR_DATE = "@1552111488 -0500"
+    GIT_AUTHOR_EMAIL = "kalt.steven@gmail.com"
+    GIT_AUTHOR_NAME = "Steven Kalt"
+    GIT_DIR = ".git"
+    GIT_EDITOR = ":"
+    GIT_INDEX_FILE = ".git/index"
+    GIT_PREFIX = ""
+[[simple-commit]]
+  hook = "prepare-commit-msg"
+  args = [  ]
+  [simple-commit.heads]
+    functional-bash-src-dir = "a011891"
+    initiate-log = "b0ca07a"
+    master = "17460d5"
+  [simple-commit.tags]
+  [simple-commit.remotes]
+  [simple-commit.toplevel]
+    COMMIT_EDITMSG  =  """ test commit please ignore """
+    ORIG_HEAD  =  """ 9cc9976e3fad0b308bb060a399d61f2e5f7f5dcf """
+    HEAD  =  """ ref: refs/heads/functional-bash-src-dir """
+  [simple-commit.exported-vars]
+    GIT_AUTHOR_DATE = "@1552111488 -0500"
+    GIT_AUTHOR_EMAIL = "kalt.steven@gmail.com"
+    GIT_AUTHOR_NAME = "Steven Kalt"
+    GIT_DIR = ".git"
+    GIT_EDITOR = ":"
+    GIT_INDEX_FILE = ".git/index"
+    GIT_PREFIX = ""
+[[simple-commit]]
+  hook = "commit-msg"
+  args = [  ]
+  [simple-commit.heads]
+    functional-bash-src-dir = "a011891"
+    initiate-log = "b0ca07a"
+    master = "17460d5"
+  [simple-commit.tags]
+  [simple-commit.remotes]
+  [simple-commit.toplevel]
+    COMMIT_EDITMSG  =  """ test commit please ignore """
+    ORIG_HEAD  =  """ 9cc9976e3fad0b308bb060a399d61f2e5f7f5dcf """
+    HEAD  =  """ ref: refs/heads/functional-bash-src-dir """
+  [simple-commit.exported-vars]
+    GIT_AUTHOR_DATE = "@1552111488 -0500"
+    GIT_AUTHOR_EMAIL = "kalt.steven@gmail.com"
+    GIT_AUTHOR_NAME = "Steven Kalt"
+    GIT_DIR = ".git"
+    GIT_EDITOR = ":"
+    GIT_INDEX_FILE = ".git/index"
+    GIT_PREFIX = ""
+[[simple-commit]]
+  hook = "post-commit"
+  args = [  ]
+  [simple-commit.heads]
+    functional-bash-src-dir = "9ebe614"
+    initiate-log = "b0ca07a"
+    master = "17460d5"
+  [simple-commit.tags]
+  [simple-commit.remotes]
+  [simple-commit.toplevel]
+    COMMIT_EDITMSG  =  """ test commit please ignore """
+    ORIG_HEAD  =  """ 9cc9976e3fad0b308bb060a399d61f2e5f7f5dcf """
+    HEAD  =  """ ref: refs/heads/functional-bash-src-dir """
+  [simple-commit.exported-vars]
+    GIT_AUTHOR_DATE = "@1552111488 -0500"
+    GIT_AUTHOR_EMAIL = "kalt.steven@gmail.com"
+    GIT_AUTHOR_NAME = "Steven Kalt"
+    GIT_DIR = ".git"
+    GIT_EDITOR = ":"
+    GIT_INDEX_FILE = ".git/index"
+    GIT_PREFIX = ""
+[[simple-commit]]
+  hook = "pre-commit"
+  args = [  ]
+  [simple-commit.heads]
+    functional-bash-src-dir = "9ebe614"
+    initiate-log = "b0ca07a"
+    master = "17460d5"
+  [simple-commit.tags]
+  [simple-commit.remotes]
+  [simple-commit.toplevel]
+    COMMIT_EDITMSG  =  """ test commit please ignore """
+    ORIG_HEAD  =  """ 9cc9976e3fad0b308bb060a399d61f2e5f7f5dcf """
+    HEAD  =  """ ref: refs/heads/functional-bash-src-dir """
+  [simple-commit.exported-vars]
+    GIT_AUTHOR_DATE = "@1552111490 -0500"
+    GIT_AUTHOR_EMAIL = "kalt.steven@gmail.com"
+    GIT_AUTHOR_NAME = "Steven Kalt"
+    GIT_DIR = ".git"
+    GIT_EDITOR = ":"
+    GIT_INDEX_FILE = ".git/index"
+    GIT_PREFIX = ""
+[[simple-commit]]
+  hook = "prepare-commit-msg"
+  args = [  ]
+  [simple-commit.heads]
+    functional-bash-src-dir = "9ebe614"
+    initiate-log = "b0ca07a"
+    master = "17460d5"
+  [simple-commit.tags]
+  [simple-commit.remotes]
+  [simple-commit.toplevel]
+    COMMIT_EDITMSG  =  """ also to be ignored """
+    ORIG_HEAD  =  """ 9cc9976e3fad0b308bb060a399d61f2e5f7f5dcf """
+    HEAD  =  """ ref: refs/heads/functional-bash-src-dir """
+  [simple-commit.exported-vars]
+    GIT_AUTHOR_DATE = "@1552111490 -0500"
+    GIT_AUTHOR_EMAIL = "kalt.steven@gmail.com"
+    GIT_AUTHOR_NAME = "Steven Kalt"
+    GIT_DIR = ".git"
+    GIT_EDITOR = ":"
+    GIT_INDEX_FILE = ".git/index"
+    GIT_PREFIX = ""
+[[simple-commit]]
+  hook = "commit-msg"
+  args = [  ]
+  [simple-commit.heads]
+    functional-bash-src-dir = "9ebe614"
+    initiate-log = "b0ca07a"
+    master = "17460d5"
+  [simple-commit.tags]
+  [simple-commit.remotes]
+  [simple-commit.toplevel]
+    COMMIT_EDITMSG  =  """ also to be ignored """
+    ORIG_HEAD  =  """ 9cc9976e3fad0b308bb060a399d61f2e5f7f5dcf """
+    HEAD  =  """ ref: refs/heads/functional-bash-src-dir """
+  [simple-commit.exported-vars]
+    GIT_AUTHOR_DATE = "@1552111490 -0500"
+    GIT_AUTHOR_EMAIL = "kalt.steven@gmail.com"
+    GIT_AUTHOR_NAME = "Steven Kalt"
+    GIT_DIR = ".git"
+    GIT_EDITOR = ":"
+    GIT_INDEX_FILE = ".git/index"
+    GIT_PREFIX = ""
+[[simple-commit]]
+  hook = "post-commit"
+  args = [  ]
+  [simple-commit.heads]
+    functional-bash-src-dir = "e738d8f"
+    initiate-log = "b0ca07a"
+    master = "17460d5"
+  [simple-commit.tags]
+  [simple-commit.remotes]
+  [simple-commit.toplevel]
+    COMMIT_EDITMSG  =  """ also to be ignored """
+    ORIG_HEAD  =  """ 9cc9976e3fad0b308bb060a399d61f2e5f7f5dcf """
+    HEAD  =  """ ref: refs/heads/functional-bash-src-dir """
+  [simple-commit.exported-vars]
+    GIT_AUTHOR_DATE = "@1552111490 -0500"
+    GIT_AUTHOR_EMAIL = "kalt.steven@gmail.com"
+    GIT_AUTHOR_NAME = "Steven Kalt"
+    GIT_DIR = ".git"
+    GIT_EDITOR = ":"
+    GIT_INDEX_FILE = ".git/index"
+    GIT_PREFIX = ""
