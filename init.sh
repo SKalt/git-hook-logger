@@ -17,7 +17,7 @@ PATH=$PATH:$(pwd)/src
 . probes.sh
 '
 body="
-log_file=$root/git-hooks.log
+log_file=$root/git-hooks-log.toml
 experiment_name=\"$experiment_name\""
 footer='{
   echo "[$(experiment-table)]"
