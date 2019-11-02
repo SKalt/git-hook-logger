@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
-# pwd should already include ./
-# global experiment_name
-. 'state-introspection-utils.sh'
-. 'toml-utils.sh'
+
+# shellcheck source=src/state-introspection-utils.sh
+. './state-introspection-utils.sh'
+# shellcheck source=src/toml-utils.sh
+. './toml-utils.sh'
+
 function experiment-table () {
-  echo "$(toml-table "$experiment_name" "$@")"
+  # global experiment_name
+  toml-table "$experiment_name" "$@"
 }
 
 function make-probe() {
@@ -20,7 +23,7 @@ function probe-args() { # scipt args are passed in
   local toml_indent="  $toml_indent"
   local IFS=', '
   declare -a escaped
-  escaped=$(toml-escape "$@")
+  escaped=toml-escape "$@"
   echo "args = [ ${escaped[*]} ]" | toml-indent;
 }
 

@@ -28,8 +28,8 @@ function remotes() {
 
 function ls-file () {
   local name contents
-  name="$(echo $1 | sed 's#.git/##')"
-  contents="$(cat $1)"
+  name="${1//.git/}"
+  contents="$(cat "$1")"
   echo "$name" " = " '"""' "$contents" '"""'
 }
 
@@ -42,8 +42,8 @@ function toplevel() {
       ! -name 'packed-refs' \
       ! -name 'index' \
       | while read -r name; do
-        ls-file "$name"
-      done
+          ls-file "$name"
+        done
 }
 
 function exported-vars() {

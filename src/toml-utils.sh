@@ -27,7 +27,10 @@ function toml-escape() {
 function toml-key() {
   # create a string toml key with the necessary bits quoted.
   declare -a key
-  key=($(toml-escape "$@"))
+  for i in $(toml-escape "$@"); do
+    key+=("$i")
+  done
+  # key=${toml-escape "$@"};
   local IFS="."
   echo "${key[*]}" # assumes all keys are quoted/space-safe
 }
